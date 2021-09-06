@@ -15,6 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ColdChainService">
+        <service
+            android:name=".MonitorService"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.honeywell.coldchainservice.action.START_TEMP_MONITOR" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +34,11 @@
 
         <service
             android:name=".MonitorTempIntentService"
-            android:exported="false"></service>
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.honeywell.coldchainservice.action.START_TEMP_MONITOR" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name=".BootCompletedReceiver"
@@ -35,7 +48,6 @@
                 <action android:name="com.honeywell.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>
